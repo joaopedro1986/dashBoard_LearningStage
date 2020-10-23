@@ -5,6 +5,7 @@ function Home() {
    
     const [size, setSize] = useState (750);
     const reduceSize = () => setSize(size - 20); 
+    const increaseSize = () => setSize(size + 20);
   
     return (
         <div className='home'>
@@ -15,7 +16,8 @@ function Home() {
             color="red"
             />
             
-            <button className="buttonSize" onClick={reduceSize}>Size</button>
+            <button className="buttonSize" onClick={reduceSize}>Reduce Size</button>
+            <button className="buttonSize" onClick={increaseSize}>Increase Size</button>
       </div>
     )
 }
