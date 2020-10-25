@@ -10,8 +10,8 @@ function Home() {
    
   
     return (
+        <>
         <div className='home'>
-            <h1>Teste</h1>
             <GoIcons.GoPrimitiveDot
             size={size}
             color="red"
@@ -21,6 +21,7 @@ function Home() {
             <button className="buttonSize" onClick={increaseSize}>Increase Size</button>
      
       </div>
+      </>
     )
 }
 

@@ -8,11 +8,16 @@
  }
 
  .home, .reports, .products {
+   color: hotpink;
    display: flex;
    height: 90vh;
    align-items: flex-start;
    justify-content: center;
    font-size: 3rem;
+   background-image: url('./Asssets/sommerda.jpg');
+   background-position: center; /* Center the image */
+   background-repeat: no-repeat; /* Do not repeat the image */
+   background-size: cover; /* Resize the background image to cover the entire container */
 }
 
 .buttonSize {
