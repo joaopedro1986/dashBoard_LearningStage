@@ -6,6 +6,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Home from './Pages/Home';
 import Products from './Pages/Products';
 import Reports from './Pages/Reports';
+import Footer from './Components/Footer'
 
 
 
@@ -20,6 +21,7 @@ function App() {
           <Route path='/reports' component={Reports} />
         </Switch>
     </Router>
+    <Footer />
       
     </>
   );
