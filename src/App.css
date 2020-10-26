@@ -7,19 +7,44 @@
    font-family: 'Lato', sans-serif;
  }
 
- .home, .reports, .products {
+ .home {
    color: hotpink;
    display: flex;
    height: 90vh;
    align-items: flex-start;
    justify-content: center;
    font-size: 3rem;
-   background-image: url('./Asssets/sommerda.jpg');
+   background-image: url('./Asssets/sommerda.jpg'), url(./Asssets/fucking.jpg);
    background-position: center; /* Center the image */
    background-repeat: no-repeat; /* Do not repeat the image */
    background-size: cover; /* Resize the background image to cover the entire container */
 }
 
+.products{
+  color: hotpink;
+   display: flex;
+   height: 90vh;
+   align-items: flex-start;
+   justify-content: center;
+   font-size: 3rem;
+   background-image: url('./Asssets/fucking.jpg'), url(./Asssets/fucking.jpg);
+   background-position: center; /* Center the image */
+   background-repeat: no-repeat; /* Do not repeat the image */
+   background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.reports{
+  color: hotpink;
+  display: flex;
+  height: 90vh;
+  align-items: flex-start;
+  justify-content: center;
+  font-size: 3rem;
+  background-image: url('./Asssets/Russia.jpg'), url(./Asssets/fucking.jpg);
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
 .buttonSize {
   background-color: #4CAF50; 
   border: none;
