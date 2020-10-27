@@ -6,17 +6,18 @@ function Home() {
    
     const [size, setSize] = useState (750);
     const reduceSize = () => setSize(size - 20); 
-    const increaseSize = () => setSize(size + 20);
 
     const [size2, setSize2] = useState (150);
-     const reduceSize2 = () => setSize2(size2 - 20); 
     const increaseSize2 = () => setSize2(size2 + 20);
+
+    const [size3, setSize3] = useState (150);
+    const increaseSize3 = () => setSize3(size3 + 20);
 
    useEffect (()=> {
         
         return () =>  {
                console.log("size1: " + size)
-            console.log("size2: " + size2)
+               console.log("size2: " + size2)
         }
          
 
@@ -26,11 +27,18 @@ function Home() {
    
 
     
-   
+    function reset () {
+        setSize(750)
+        setSize2(150)
+        setSize3(150)
+
+
+    }
   
     return (
         <>
         <div className='home'>
+           
             <GoIcons.GoPrimitiveDot
             size={size}
             color="red"
@@ -40,17 +48,25 @@ function Home() {
             color="blue"
             />
             <GoIcons.GoPrimitiveDot
-            size={size2}
+            size={size3}
             color="green"
             />
             <button className="buttonSize" onClick={() => {
                 reduceSize()
                 increaseSize2()
-            }}  >Move to Safe Area</button>
-            <button className="buttonSize" onClick={() => {
-                reduceSize2()
-                increaseSize()
-            }}  >Remove from Safe Area</button>
+            }}  >Move to Area 1</button>
+             <button className="buttonSize" onClick={() => {
+                reduceSize()
+                increaseSize3()
+            }}  >Move to Area 2</button>
+            <button className='buttonSize' onClick={reset}>
+                Reset
+            </button>
+
+            <h1 className='box1'>
+                {size < 50 ? 'Safe' : 'Not Safe'}
+            </h1>
+          
         
          
      

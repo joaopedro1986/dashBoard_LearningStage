@@ -4,7 +4,7 @@ import * as AiIcons from 'react-icons/ai';
 import './Footer.css'
 
 function Footer () {
-    const sizeIcon = '100px'
+    const sizeIcon = '25px'
     return (
         <footer className="footerReports">
                <FaIcons.FaFacebookMessenger size={sizeIcon} />
