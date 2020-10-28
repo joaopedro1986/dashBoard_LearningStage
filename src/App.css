@@ -8,16 +8,12 @@
  }
 
  .home {
-   color: hotpink;
+   color: black;
    display: flex;
-   height: 90vh;
-   align-items: flex-start;
-   justify-content: center;
+   align-items: center;
+   justify-content: space-between;
    font-size: 3rem;
-   background-image: url('./Asssets/sommerda.jpg'), url(./Asssets/fucking.jpg);
-   background-position: center; /* Center the image */
-   background-repeat: no-repeat; /* Do not repeat the image */
-   background-size: cover; /* Resize the background image to cover the entire container */
+
 }
 
 .products{
@@ -63,4 +59,34 @@
   margin: 0; 
   color: black;
   background-color: white;
+  display: flex;
+}
+
+
+.headerHome {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.circle-1 {
+  display: flex;
+  flex-grow: 1;
+}
+
+.circle-2 {
+  flex-basis: 400px;
+  flex-grow: 1;
+
+}
+
+.circle-3 {
+  display: flex;
+  flex-grow: 1;
+
+}
+
+.textArea{
+  display: flex;
+  justify-content: space-evenly;
 }
