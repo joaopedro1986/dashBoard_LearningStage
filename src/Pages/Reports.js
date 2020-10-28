@@ -1,12 +1,14 @@
-import React from 'react'
+import React, {useContext} from 'react';
+import Context from '../store/context';
 
 
 function Reports() {
-    const sizeIcon = '100px'
+    const {state} = useContext(Context);
+
     return (
     
         <div className='reports'>
-            <h1>Reports</h1>  
+            <h1>{state.value2}</h1>  
         </div>
      
      

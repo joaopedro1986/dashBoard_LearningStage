@@ -9,8 +9,7 @@ function Products() {
     return (
         <div className='products'>
             <h1>{state.value}</h1>
-
-      </div>
+        </div>
     )
 }
 
