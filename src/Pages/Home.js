@@ -25,36 +25,59 @@ function Home() {
     const [size3, setSize3] = useState (state.safe2/2);
     const increaseSize3 = () => setSize3(size3 + reduceCircle);
 
+   
+
     
 
     
 
    
-
+/*
    useEffect (()=> {
 
         return () =>  {
-              reduceSize()
+            state.buttonShow = true;
          }
          
 
     },
-    []);
+    [safe]);
+    */
 
     function decreseSafety() {
+        
         state.unSafe -= 100;
+        if (state.unSafe <= 50) {
+            state.buttonShow = !state.buttonShow;
+        }
+        
+       
+        
     }
 
     function increaseSafety1() {
+        
         state.safe1 += 100;
     }
 
     function increaseSafety2() {
+      
         state.safe2 += 100;
     }
 
     function printData() {
-        console.log(size);
+        console.log(size)
+        console.log(state.buttonShow)
+    }
+
+    function resetProps(){
+        setSize(originalSize1)
+        setSize2(originalSize2)
+        setSize3(originalSize2)
+        state.unSafe = state.notChangeState;
+        state.safe1 = 0;
+        state.safe2 = 0;
+        state.buttonShow = false;
     }
 
 
@@ -65,8 +88,9 @@ function Home() {
        
         <div className='headerHome'>´
             <div>
-                <button className="buttonSize" onClick={(e) => {
+                <button className={state.buttonShow ? 'buttonControl-hide' : 'buttonControl'} onClick={(e) => {
                 e.preventDefault()
+                printData()
                 reduceSize()
                 increaseSize2()
                 decreseSafety()
@@ -74,30 +98,27 @@ function Home() {
                 printData()
            
             }}  >Move to Area 1</button>
-             <button className="buttonSize" onClick={(e) => {
+             <button className={state.buttonShow  ? 'buttonControl-hide' : 'buttonControl'}  onClick={(e) => {
                 e.preventDefault()
                 reduceSize()
                 increaseSize3()
                 decreseSafety()
                 increaseSafety2()
+                
                 printData()
             }}  >Move to Area 2</button>
-            <button className='buttonSize' onClick={(e) =>{
+            <button className='buttonReset' onClick={(e) =>{
                   e.preventDefault()
-                  setSize(originalSize1)
-                  setSize2(originalSize2)
-                  setSize3(originalSize2)
-                  state.unSafe = state.notChangeState;
-                  state.safe1 = 0;
-                  state.safe2 = 0;
+                  resetProps()  
+                
                   printData()
             }}>
                 Reset
             </button>
             </div>
            
-            <h1 className='box1'>
-               Status: {size <= 100 ? 'Safe' : 'Not Safe'}
+            <h1 className={state.buttonShow  ? 'box2' : 'box1'}>
+               Status: {state.buttonShow  ? 'Safe' : 'Not Safe'}
             </h1>
         </div>
 
