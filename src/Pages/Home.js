@@ -8,35 +8,38 @@ import Table from 'react-bootstrap/Table'
 
 function Home() {
 
+    const {state} = useContext(Context);
+   
+    const originalSize1 = 500;
+    const originalSize2 = 100;
+    const reduceCircle = 40;
+
 
    
-    const originalSize1 = 400;
-    const originalSize2 = 100;
-    const reduceCircle = 20;
-   
-    const [size, setSize] = useState (originalSize1);
+    const [size, setSize] = useState (state.unSafe/2);
     const reduceSize = () => setSize(size - reduceCircle); 
 
-    const [size2, setSize2] = useState (originalSize2);
+    const [size2, setSize2] = useState (state.safe1/2);
     const increaseSize2 = () => setSize2(size2 + reduceCircle);
 
-    const [size3, setSize3] = useState (originalSize2);
+    const [size3, setSize3] = useState (state.safe2/2);
     const increaseSize3 = () => setSize3(size3 + reduceCircle);
 
-    const {state} = useContext(Context);
+    
+
+    
 
    
 
    useEffect (()=> {
-     //   state.safe += 10;
-       // state.unsafe -= 10;
+
         return () =>  {
-              console.log('Teste')
+              reduceSize()
          }
          
 
     },
-    [size]);
+    []);
 
     function decreseSafety() {
         state.unSafe -= 100;
@@ -50,21 +53,9 @@ function Home() {
         state.safe2 += 100;
     }
 
-
-
-
-    
-  
-    
-    function reset () {
-        setSize(originalSize1)
-        setSize2(originalSize2)
-        setSize3(originalSize2)
-        state.unSafe = 1000;
-        state.safe1 = 0;
-        state.safe2 = 0;
- }
-  
+    function printData() {
+        console.log(size);
+    }
 
 
 
@@ -74,25 +65,39 @@ function Home() {
        
         <div className='headerHome'>´
             <div>
-                <button className="buttonSize" onClick={() => {
+                <button className="buttonSize" onClick={(e) => {
+                e.preventDefault()
                 reduceSize()
                 increaseSize2()
                 decreseSafety()
                 increaseSafety1()
+                printData()
            
             }}  >Move to Area 1</button>
-             <button className="buttonSize" onClick={() => {
+             <button className="buttonSize" onClick={(e) => {
+                e.preventDefault()
                 reduceSize()
                 increaseSize3()
+                decreseSafety()
                 increaseSafety2()
+                printData()
             }}  >Move to Area 2</button>
-            <button className='buttonSize' onClick={reset}>
+            <button className='buttonSize' onClick={(e) =>{
+                  e.preventDefault()
+                  setSize(originalSize1)
+                  setSize2(originalSize2)
+                  setSize3(originalSize2)
+                  state.unSafe = state.notChangeState;
+                  state.safe1 = 0;
+                  state.safe2 = 0;
+                  printData()
+            }}>
                 Reset
             </button>
             </div>
            
             <h1 className='box1'>
-               Status: {size < 50 ? 'Safe' : 'Not Safe'}
+               Status: {size <= 100 ? 'Safe' : 'Not Safe'}
             </h1>
         </div>
 
@@ -100,9 +105,13 @@ function Home() {
         <div className='home'>
               
         
-        <Card style={{ width: '18rem' }}>
+        <Card className="card1">
              <Card.Body>
-            <Card.Title>Unsafe Zone</Card.Title>
+            <Card.Title>
+                Unsafe Zone
+                <br />
+                <p>Workers: {state.unSafe} / {state.notChangeState}</p>
+                </Card.Title>
             
                 <div className='circle-1'>
                         
@@ -114,9 +123,13 @@ function Home() {
         </Card.Body>
         </Card>
                     
-        <Card style={{ width: '18rem' }}>
+        <Card className="card1">
              <Card.Body>
-            <Card.Title>Zone 1</Card.Title>
+            <Card.Title>
+                Zone 1
+                <br />
+                <p> Workers: {state.safe1}</p>
+                </Card.Title>
                 <div className='circle-2'>
                     
                     <GoIcons.GoPrimitiveDot
@@ -126,9 +139,13 @@ function Home() {
                 </div>
                 </Card.Body>
         </Card>
-        <Card style={{ width: '18rem' }}>
+        <Card className="card1">
              <Card.Body>
-            <Card.Title>Zone 2</Card.Title>       
+            <Card.Title>
+                Zone 2 
+                <br />
+                <p>Workers: {state.safe2}</p>
+                </Card.Title>       
                 <div className='circle-3'>
                     <GoIcons.GoPrimitiveDot
                     size={size3}

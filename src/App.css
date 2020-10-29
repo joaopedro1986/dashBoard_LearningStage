@@ -90,3 +90,9 @@
   display: flex;
   justify-content: space-evenly;
 }
+
+.card1{
+  width: 7em;
+  height: 40rem;
+  border-color: white;
+}

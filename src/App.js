@@ -4,7 +4,7 @@ import './App.css';
 import NavBar from './Components/NavBar'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Home from './Pages/Home';
-import Products from './Pages/Products';
+import Workers from './Pages/Workers';
 import Reports from './Pages/Reports';
 import Footer from './Components/Footer'
 import NavBarBt from './Components/NavBarBt'
@@ -18,11 +18,11 @@ function App() {
         <NavBarBt />
         <Switch>
           <Route path='/' exact component={Home} />
-          <Route path='/products' component={Products} />
+          <Route path='/workers' component={Workers} />
           <Route path='/reports' component={Reports} />
         </Switch>
-    </Router>
-    <Footer />
+      </Router>
+      <Footer />
       
     </>
   );

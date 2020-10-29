@@ -17,7 +17,7 @@ function Products() {
                     <thead>
                         <tr>
                         <th>Zone</th>
-                        <th>Number Workers</th>
+                        <th>Worker's Number</th>
                         </tr>
                     </thead>
                     <tbody>
