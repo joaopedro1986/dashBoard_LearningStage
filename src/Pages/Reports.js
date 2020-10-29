@@ -8,7 +8,7 @@ function Reports() {
     return (
     
         <div className='reports'>
-            <h1>{state.value2}</h1>  
+            <h1>{state.safe}</h1>  
         </div>
      
      

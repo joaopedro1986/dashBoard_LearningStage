@@ -1,8 +1,7 @@
 import { useState } from 'react'
 
 const useGlobalStore = () => {
-    const [state, setState] = useState({value: 'Global State! Test #1',
-                                        value2: 'Global State! Test #2!'})
+    const [state, setState] = useState({unSafe: 1000, safe1: 0, safe2: 0})
 
     const actions = (action) => {
         const {type, payload} = action;

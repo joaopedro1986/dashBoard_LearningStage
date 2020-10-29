@@ -7,6 +7,7 @@ import Home from './Pages/Home';
 import Products from './Pages/Products';
 import Reports from './Pages/Reports';
 import Footer from './Components/Footer'
+import NavBarBt from './Components/NavBarBt'
 
 
 
@@ -14,7 +15,7 @@ function App() {
   return (
     <>
     <Router>
-        <NavBar />
+        <NavBarBt />
         <Switch>
           <Route path='/' exact component={Home} />
           <Route path='/products' component={Products} />
