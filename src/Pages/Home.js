@@ -11,8 +11,8 @@ function Home() {
     const {state} = useContext(Context);
    
     const originalSize1 = 500;
-    const originalSize2 = 100;
-    const reduceCircle = 40;
+    const originalSize2 = 0;
+    const reduceCircle = 50;
 
 
    
