@@ -1,43 +1,24 @@
+
 import React, {useContext} from 'react'
+import '../Components/List.css'
 import Context from '../store/context';
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
-import Table from 'react-bootstrap/Table'
+import List from '../Components/List'
+
+import { WorkerData} from '../Components/WorkersData'
 
 
 
 
 
 function Products() {
-    const {state} = useContext(Context);
-    return (
-            
-           <div>
-              <Table striped bordered hover>
-                    <thead>
-                        <tr>
-                        <th>Zone</th>
-                        <th>Worker's Number</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                        <td>Unsafe Area</td>
-                        <td>{state.unSafe}</td>
-                        </tr>
-                        <tr>
-                        <td>Zone 1</td>
-                        <td>{state.safe1}</td>
-                        </tr>
-                        <tr>
-                        <td>Zone 2</td>
-                        <td>{state.safe2}</td>
-                        </tr>
-                    </tbody>
-                    </Table>
-           </div>
-  
 
+  
+    
+    return (
+        <div>
+        <List />
+    </div>
+            
 
             
   

@@ -4,28 +4,44 @@ import * as GoIcons  from 'react-icons/go';
 import Card from 'react-bootstrap/Card'
 import Context from '../store/context';
 import Table from 'react-bootstrap/Table'
+import ProgressBar from 'react-bootstrap/ProgressBar'
+import Alert from 'react-bootstrap/Alert'
+import {PieChart, Pie, Tooltip} from 'recharts';
+import { Link } from 'react-router-dom'
+import { Button } from 'bootstrap';
 
 
 function Home() {
 
     const {state} = useContext(Context);
    
-    const originalSize1 = 500;
+    const originalSize1 = 200;
     const originalSize2 = 0;
-    const reduceCircle = 50;
+    const reduceCircle = 20;
 
 
    
-    const [size, setSize] = useState (state.unSafe/2);
+    const [size, setSize] = useState (state.unSafe/5);
     const reduceSize = () => setSize(size - reduceCircle); 
 
-    const [size2, setSize2] = useState (state.safe1/2);
+    const [size2, setSize2] = useState ((state.safe1/5));
     const increaseSize2 = () => setSize2(size2 + reduceCircle);
 
-    const [size3, setSize3] = useState (state.safe2/2);
+    const [size3, setSize3] = useState (state.safe2/5 );
     const increaseSize3 = () => setSize3(size3 + reduceCircle);
 
-   
+    
+
+
+    const messageSuccess = 'Every Workers are in Safety Right Now'
+    const messageError = state.unSafe +' workers are out of safe areas'
+
+    const data = [
+        { name:'UnsafeArea', value: state.unSafe},
+        { name: 'Area 1', value: state.safe1},
+        { name: 'Area 2', value: state.safe2}
+    ]
+
 
     
 
@@ -66,8 +82,8 @@ function Home() {
     }
 
     function printData() {
-        console.log(size)
-        console.log(state.buttonShow)
+        
+        console.log(state.listEvent)
     }
 
     function resetProps(){
@@ -80,14 +96,26 @@ function Home() {
         state.buttonShow = false;
     }
 
+  const  viewData = (props) => {
+      state.listEvent = props
+      
+       //window.open('/Workers','data','height=550,width=400');
+
+        
+    }
+    
+
 
 
     return (
 
-        <>
+        
+
+        <div className='home'>
        
-        <div className='headerHome'>´
-            <div>
+        <ProgressBar animated now={size / 2} />
+        <div className='buttonHome'>´
+             
                 <button className={state.buttonShow ? 'buttonControl-hide' : 'buttonControl'} onClick={(e) => {
                 e.preventDefault()
                 printData()
@@ -95,7 +123,6 @@ function Home() {
                 increaseSize2()
                 decreseSafety()
                 increaseSafety1()
-                printData()
            
             }}  >Move to Area 1</button>
              <button className={state.buttonShow  ? 'buttonControl-hide' : 'buttonControl'}  onClick={(e) => {
@@ -105,28 +132,47 @@ function Home() {
                 decreseSafety()
                 increaseSafety2()
                 
-                printData()
+               
+                
+
             }}  >Move to Area 2</button>
             <button className='buttonReset' onClick={(e) =>{
                   e.preventDefault()
                   resetProps()  
-                
-                  printData()
+                  
             }}>
                 Reset
             </button>
-            </div>
+          
            
-            <h1 className={state.buttonShow  ? 'box2' : 'box1'}>
-               Status: {state.buttonShow  ? 'Safe' : 'Not Safe'}
-            </h1>
+           
         </div>
+      
+
+        <Alert className='alert' variant={state.buttonShow ? 
+        "success ": 'danger'}>
+         <Alert.Heading>Messge From System</Alert.Heading>
+         <p> {state.buttonShow ? messageSuccess : messageError}
+  </p>
+  <hr />
+
+</Alert>
+
+    <PieChart width={400} height={400}>
+        <Pie dataKey="value" isAnimationActive={false} data={data} cx={200} cy={200} outerRadius={80} fill="#8884d8" label />
+        <Tooltip />
+      </PieChart>
 
      
-        <div className='home'>
-              
         
-        <Card className="card1">
+              
+      <div className='circleCards'>
+          
+        <Card className="card1"  onClick={(e) => {
+            e.preventDefault()
+            viewData(0)
+        }}>
+        <Link to='/Workers'>
              <Card.Body>
             <Card.Title>
                 Unsafe Zone
@@ -141,55 +187,81 @@ function Home() {
                         color="red"
                         />
                 </div>
+                
         </Card.Body>
+      
+            </Link>
         </Card>
+
                     
-        <Card className="card1">
+        <Card className="card1"  onClick={(e) => {
+            e.preventDefault()
+            viewData(1)
+        }}>
+        <Link to='/Workers'>
              <Card.Body>
             <Card.Title>
                 Zone 1
                 <br />
                 <p> Workers: {state.safe1}</p>
+               
                 </Card.Title>
                 <div className='circle-2'>
                     
                     <GoIcons.GoPrimitiveDot
-                    size={size2}
+                    size={size2 + 40}
                     color="blue"
                     />
                 </div>
-                </Card.Body>
+               
+                  
+                 </Card.Body> 
+          </Link>
         </Card>
-        <Card className="card1">
+        <Card className="card1" onClick={(e) => {
+            e.preventDefault()
+            viewData(2)
+        }}>
+        <Link to='/Workers'>
              <Card.Body>
             <Card.Title>
                 Zone 2 
                 <br />
                 <p>Workers: {state.safe2}</p>
+               
                 </Card.Title>       
                 <div className='circle-3'>
                     <GoIcons.GoPrimitiveDot
-                    size={size3}
+                    size={size3 + 40}
                     color="green"
                      />
                 </div>
-                </Card.Body>
+              
+                   
+                     
+                </Card.Body> 
+                </Link>
+                
         </Card>
 
         
+    
+      </div>  
+    
+
+        
  
-           
+      
             
            
 
-          
-          
+   
         
          
      
       </div>
       
-      </>
+    
     )
 }
 

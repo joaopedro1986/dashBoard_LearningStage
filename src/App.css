@@ -8,12 +8,16 @@
  }
 
  .home {
-   color: black;
-   display: flex;
-   align-items: center;
-   justify-content: space-around;
-   font-size: 3rem;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+
+ }
+
+ .home>*:first-child {
+  align-self: stretch;
 }
 
 .products{
@@ -76,30 +80,42 @@
 }
 
 .box1{
-  width: 320px;
+  width: 380px;
   padding: 10px;
-  border: 5px solid gray;
+  
   margin: 0; 
   color: black;
-  background-color: white;
-  display: flex;
+ 
+  text-align: center;
+  position:relative;
+  transition: .5s ease;
+  top: -150px;
+  left: 820px;
+  right: -20px;
+  bottom: -191px;
 }
 
 .box2{
-  width: 320px;
+  width: 380px;
   padding: 10px;
-  border: 5px solid gray;
+  
   margin: 0; 
   color: green;
-  background-color: white;
-  display: flex;
+ 
+  text-align: center;
+  position:relative;
+  transition: .5s ease;
+  top: -150px;
+  left: 820px;
+  right: -20px;
+  bottom: -191px;
 }
 
 
-.headerHome {
+.buttonHome {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .circle-1 {
@@ -129,4 +145,24 @@
   width: 7em;
   height: 40rem;
   border-color: white;
+}
+
+.circleCards{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 3rem;
+  flex-wrap: wrap;
+  
+    
+}
+
+.alert{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  font-size: 3rem;
 }
