@@ -33,8 +33,8 @@ function Home() {
     
 
 
-    const messageSuccess = 'Every Workers are in Safety Right Now'
-    const messageError = state.unSafe +' workers are out of safe areas'
+    const messageSuccess = 'All Workers Are Safe'
+    const messageError = state.unSafe +' Workers Are Outside The Security Zone'
 
     const data = [
         { name:'UnsafeArea', value: state.unSafe},
@@ -158,10 +158,6 @@ function Home() {
 
 </Alert>
 
-    <PieChart width={400} height={400}>
-        <Pie dataKey="value" isAnimationActive={false} data={data} cx={200} cy={200} outerRadius={80} fill="#8884d8" label />
-        <Tooltip />
-      </PieChart>
 
      
         
@@ -172,25 +168,26 @@ function Home() {
             e.preventDefault()
             viewData(0)
         }}>
-        <Link to='/Workers'>
+        
              <Card.Body>
             <Card.Title>
                 Unsafe Zone
                 <br />
                 <p>Workers: {state.unSafe} / {state.notChangeState}</p>
                 </Card.Title>
+                <Link to='/Workers'>
             
                 <div className='circle-1'>
                         
                         <GoIcons.GoPrimitiveDot
-                        size={size}
+                        size={size + 40}
                         color="red"
                         />
                 </div>
-                
+                </Link>
         </Card.Body>
       
-            </Link>
+            
         </Card>
 
                     
@@ -198,7 +195,7 @@ function Home() {
             e.preventDefault()
             viewData(1)
         }}>
-        <Link to='/Workers'>
+     
              <Card.Body>
             <Card.Title>
                 Zone 1
@@ -206,41 +203,43 @@ function Home() {
                 <p> Workers: {state.safe1}</p>
                
                 </Card.Title>
-                <div className='circle-2'>
+                   <Link to='/Workers'>
+                        <div className='circle-2'>
                     
-                    <GoIcons.GoPrimitiveDot
-                    size={size2 + 40}
-                    color="blue"
+                         <GoIcons.GoPrimitiveDot
+                         size={size2 + 40}
+                          color="blue"
                     />
                 </div>
                
-                  
+                   </Link>
                  </Card.Body> 
-          </Link>
+         
         </Card>
         <Card className="card1" onClick={(e) => {
             e.preventDefault()
             viewData(2)
         }}>
-        <Link to='/Workers'>
+       
              <Card.Body>
             <Card.Title>
                 Zone 2 
                 <br />
                 <p>Workers: {state.safe2}</p>
                
-                </Card.Title>       
-                <div className='circle-3'>
-                    <GoIcons.GoPrimitiveDot
-                    size={size3 + 40}
-                    color="green"
+                </Card.Title>  
+                <Link to='/Workers'>     
+                    <div className='circle-3'>
+                             <GoIcons.GoPrimitiveDot
+                              size={size3 + 40}
+                              color="green"
                      />
-                </div>
-              
+                    </div>
+                </Link>
                    
                      
                 </Card.Body> 
-                </Link>
+               
                 
         </Card>
 

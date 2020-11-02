@@ -4,6 +4,7 @@ import {PieChart, Pie, Tooltip} from 'recharts';
 import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend} from 'recharts';
 import Context from '../store/context';
 import {RadialBarChart, RadialBar } from 'recharts';
+import DataFetching from '../Components/DataFetching'
 
 function Reports() {
 
@@ -43,7 +44,9 @@ function Reports() {
       
     return (
         <div>
-            <h1>Hello</h1>
+
+    <DataFetching />  
+            
             <PieChart width={400} height={400}>
         <Pie dataKey="value" isAnimationActive={false} data={data} cx={200} cy={200} outerRadius={80} fill="#8884d8" label />
         <Tooltip />
@@ -79,6 +82,8 @@ function Reports() {
                 <Legend iconSize={10} width={120} height={140} layout='vertical' verticalAlign='middle' align="right" />
                 <Tooltip />
                 </RadialBarChart>
+
+          
         </div>
         
       

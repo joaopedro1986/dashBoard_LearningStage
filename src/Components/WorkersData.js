@@ -19,7 +19,7 @@ export const WorkerData = [
     {
         id:3,
         name: 'Felistberto Sousa',
-        area: 2
+        area: 0
     },
     {
         id:4,
